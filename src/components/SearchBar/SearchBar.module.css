@@ -1,0 +1,25 @@
+.headerBox {
+  padding: 20px;
+  background-color: rgb(95, 95, 91);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerForm {
+  display: flex;
+  gap: 20px;
+}
+
+.headerInput {
+  width: 200px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+.formButton {
+  border: 1px solid #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
