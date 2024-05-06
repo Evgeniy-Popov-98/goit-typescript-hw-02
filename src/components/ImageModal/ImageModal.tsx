@@ -1,3 +1,4 @@
+import { FC } from "react";
 import Modal from "react-modal";
 Modal.setAppElement(document.getElementById("root"));
 
@@ -12,11 +13,20 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ modalIsOpen, openModal, cardImages }) => {
-  function closeModal() {
-    openModal(false);
-  }
+interface ImageProps {
+  cardImages: {
+    src: string;
+    alt: string;
+  };
+  closeModal: () => void;
+  modalIsOpen: boolean;
+}
 
+const ImageModal: FC<ImageProps> = ({
+  modalIsOpen,
+  closeModal,
+  cardImages,
+}) => {
   return (
     <div id="modalWindow">
       <Modal

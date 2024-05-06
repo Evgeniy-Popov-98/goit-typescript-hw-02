@@ -10,25 +10,30 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import MoreLoader from "./components/MoreLoader/MoreLoader";
 
+import { ImageType } from "./components/types";
+
 function App() {
-  const [cardArr, setCardArr] = useState([]);
-  const [loader, setLoader] = useState(false);
-  const [moreLoader, setMoreLoader] = useState(false);
-  const [error, setError] = useState(false);
-  const [valueInput, setValueInput] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
-  const [showLoreMore, setShowLoreMore] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalValueImg, setModalValueImg] = useState(null);
+  const [cardArr, setCardArr] = useState<ImageType[]>([]);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [moreLoader, setMoreLoader] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [valueInput, setValueInput] = useState<string>("");
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [showLoreMore, setShowLoreMore] = useState<boolean>(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [modalValueImg, setModalValueImg] = useState<{
+    src: string;
+    alt: string;
+  } | null>(null);
 
   useEffect(() => {
     if (!valueInput) return;
 
-    async function dataImages() {
+    async function dataImages(): Promise<void> {
       setError(false);
       try {
         const data = await getImages(valueInput, pageNumber);
-        setCardArr((prevState) => [...prevState, ...data]);
+        setCardArr((prevState: ImageType[] | null) => [...prevState, ...data]);
         setShowLoreMore(true);
       } catch (error) {
         setShowLoreMore(false);
@@ -41,7 +46,7 @@ function App() {
     dataImages();
   }, [valueInput, pageNumber]);
 
-  const onSubmit = (event) => {
+  const onSubmit = (event: any): void => {
     setLoader(true);
     setCardArr([]);
     setPageNumber(1);
@@ -53,9 +58,13 @@ function App() {
     setPageNumber(pageNumber + 1);
   };
 
-  const openModal = (event) => {
+  const openModal = (event: any): void => {
     setModalIsOpen(event.bool);
     setModalValueImg(event);
+  };
+
+  const closeModal = (): void => {
+    setModalIsOpen(false);
   };
 
   return (
@@ -74,7 +83,7 @@ function App() {
       {modalIsOpen && (
         <ImageModal
           modalIsOpen={modalIsOpen}
-          openModal={openModal}
+          closeModal={closeModal}
           cardImages={modalValueImg}
         />
       )}
