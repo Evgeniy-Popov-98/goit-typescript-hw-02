@@ -10,3 +10,8 @@ export interface ImageType {
   };
   likes: number;
 }
+
+export interface CardImageType {
+  src: string;
+  alt: string;
+}

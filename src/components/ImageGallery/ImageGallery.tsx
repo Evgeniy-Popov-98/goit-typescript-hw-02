@@ -8,7 +8,7 @@ import style from "./ImageGallery.module.css";
 
 interface ImageProps {
   cardImages: ImageType[];
-  openModal: (object: object) => object;
+  openModal: (object: object) => void;
 }
 
 const ImageGallery: FC<ImageProps> = ({ cardImages, openModal }) => {

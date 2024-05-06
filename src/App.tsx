@@ -10,7 +10,7 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import MoreLoader from "./components/MoreLoader/MoreLoader";
 
-import { ImageType } from "./components/types";
+import { CardImageType, ImageType } from "./components/types";
 
 function App() {
   const [cardArr, setCardArr] = useState<ImageType[]>([]);
@@ -21,10 +21,7 @@ function App() {
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [showLoreMore, setShowLoreMore] = useState<boolean>(false);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [modalValueImg, setModalValueImg] = useState<{
-    src: string;
-    alt: string;
-  } | null>(null);
+  const [modalValueImg, setModalValueImg] = useState<CardImageType>(Object);
 
   useEffect(() => {
     if (!valueInput) return;
@@ -53,14 +50,17 @@ function App() {
     setValueInput(event);
   };
 
-  const onClick = () => {
+  const onClick = (): void => {
     setMoreLoader(true);
     setPageNumber(pageNumber + 1);
   };
 
   const openModal = (event: any): void => {
     setModalIsOpen(event.bool);
-    setModalValueImg(event);
+    setModalValueImg({
+      src: event.src,
+      alt: event.alt,
+    });
   };
 
   const closeModal = (): void => {
@@ -77,9 +77,7 @@ function App() {
         <ImageGallery cardImages={cardArr} openModal={openModal} />
       )}
       {moreLoader && <MoreLoader />}
-      {showLoreMore && (
-        <LoadMoreBtn onClick={onClick} pageNumber={pageNumber} />
-      )}
+      {showLoreMore && <LoadMoreBtn onClick={onClick} />}
       {modalIsOpen && (
         <ImageModal
           modalIsOpen={modalIsOpen}

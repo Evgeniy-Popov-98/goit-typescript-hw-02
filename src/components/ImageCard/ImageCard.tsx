@@ -6,7 +6,7 @@ import style from "./ImageCard.module.css";
 
 interface ImageProps {
   dataImages: ImageType;
-  openModal: (object: object) => object;
+  openModal: (object: object) => void;
 }
 
 const ImageCard: FC<ImageProps> = ({ dataImages, openModal }) => {

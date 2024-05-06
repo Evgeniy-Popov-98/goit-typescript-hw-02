@@ -1,5 +1,6 @@
 import { FC } from "react";
 import Modal from "react-modal";
+import { CardImageType } from "../types";
 Modal.setAppElement(document.getElementById("root"));
 
 const customStyles = {
@@ -14,10 +15,7 @@ const customStyles = {
 };
 
 interface ImageProps {
-  cardImages: {
-    src: string;
-    alt: string;
-  };
+  cardImages: CardImageType;
   closeModal: () => void;
   modalIsOpen: boolean;
 }
