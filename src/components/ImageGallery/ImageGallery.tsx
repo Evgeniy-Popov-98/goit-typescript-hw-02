@@ -1,8 +1,17 @@
+import { FC } from "react";
+import { ImageType } from "../types";
+
 import ImageCard from "../ImageCard/ImageCard";
+
 import clsx from "clsx";
 import style from "./ImageGallery.module.css";
 
-const ImageGallery = ({ cardImages, openModal }) => {
+interface ImageProps {
+  cardImages: ImageType[];
+  openModal: (object: object) => object;
+}
+
+const ImageGallery: FC<ImageProps> = ({ cardImages, openModal }) => {
   return (
     <ul className={clsx(style.galleryList)}>
       {Array.isArray(cardImages) &&

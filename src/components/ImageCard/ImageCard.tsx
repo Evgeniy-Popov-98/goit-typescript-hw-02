@@ -1,12 +1,20 @@
+import { FC } from "react";
+import { ImageType } from "../types";
+
 import clsx from "clsx";
 import style from "./ImageCard.module.css";
 
-const ImageCard = ({ dataImages, openModal }) => {
+interface ImageProps {
+  dataImages: ImageType;
+  openModal: (object: object) => object;
+}
+
+const ImageCard: FC<ImageProps> = ({ dataImages, openModal }) => {
   const handleClick = () => {
     const object = {
       bool: true,
       src: dataImages.urls.regular,
-      alt: dataImages.urls.alt_description,
+      alt: dataImages.alt_description,
     };
     openModal(object);
   };
@@ -16,7 +24,7 @@ const ImageCard = ({ dataImages, openModal }) => {
         <img
           className={clsx(style.galleryImage)}
           src={dataImages.urls.small}
-          alt={dataImages.urls.alt_description}
+          alt={dataImages.alt_description}
           onClick={handleClick}
         />
         <ul className={clsx(style.galleryList)}>
