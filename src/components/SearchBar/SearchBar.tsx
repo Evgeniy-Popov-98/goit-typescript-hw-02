@@ -1,12 +1,18 @@
 import toast, { Toaster } from "react-hot-toast";
 import clsx from "clsx";
 import style from "./SearchBar.module.css";
+import { FC, FormEvent } from "react";
 
-const SearchBar = ({ onSubmit }) => {
-  const handleSubmit = (event) => {
+interface SearchBarProps {
+  onSubmit: (inputValue: string) => void;
+}
+
+const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target;
     const { search } = form.elements;
+
     if (search.value.length === 0) {
       toast.error("The input field is empty! Please write a word to search.", {
         icon: "😰",

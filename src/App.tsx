@@ -29,8 +29,8 @@ function App() {
     async function dataImages(): Promise<void> {
       setError(false);
       try {
-        const data = await getImages(valueInput, pageNumber);
-        setCardArr((prevState: ImageType[] | null) => [...prevState, ...data]);
+        const data: ImageType[] = await getImages(valueInput, pageNumber);
+        setCardArr([...cardArr, ...data]);
         setShowLoreMore(true);
       } catch (error) {
         setShowLoreMore(false);
@@ -43,7 +43,7 @@ function App() {
     dataImages();
   }, [valueInput, pageNumber]);
 
-  const onSubmit = (event: any): void => {
+  const onSubmit = (event: string): void => {
     setLoader(true);
     setCardArr([]);
     setPageNumber(1);
@@ -55,7 +55,7 @@ function App() {
     setPageNumber(pageNumber + 1);
   };
 
-  const openModal = (event: any): void => {
+  const openModal = (event: object): void => {
     setModalIsOpen(event.bool);
     setModalValueImg({
       src: event.src,
