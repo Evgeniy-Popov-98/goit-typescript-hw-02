@@ -1,12 +1,12 @@
 import { FC } from "react";
-import { ImageType } from "../types";
+import { ImageType, CardImageType } from "../types";
 
 import clsx from "clsx";
 import style from "./ImageCard.module.css";
 
 interface ImageProps {
   dataImages: ImageType;
-  openModal: (object: object) => void;
+  openModal: (object: CardImageType) => void;
 }
 
 const ImageCard: FC<ImageProps> = ({ dataImages, openModal }) => {

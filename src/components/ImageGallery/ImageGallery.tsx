@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ImageType } from "../types";
+import { ImageType, CardImageType } from "../types";
 
 import ImageCard from "../ImageCard/ImageCard";
 
@@ -8,7 +8,7 @@ import style from "./ImageGallery.module.css";
 
 interface ImageProps {
   cardImages: ImageType[];
-  openModal: (object: object) => void;
+  openModal: (object: CardImageType) => void;
 }
 
 const ImageGallery: FC<ImageProps> = ({ cardImages, openModal }) => {

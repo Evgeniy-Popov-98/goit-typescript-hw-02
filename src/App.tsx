@@ -55,12 +55,9 @@ function App() {
     setPageNumber(pageNumber + 1);
   };
 
-  const openModal = (event: object): void => {
+  const openModal = (event: CardImageType): void => {
     setModalIsOpen(event.bool);
-    setModalValueImg({
-      src: event.src,
-      alt: event.alt,
-    });
+    setModalValueImg(event);
   };
 
   const closeModal = (): void => {

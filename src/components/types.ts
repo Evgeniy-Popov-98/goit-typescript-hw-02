@@ -12,6 +12,7 @@ export interface ImageType {
 }
 
 export interface CardImageType {
+  bool: boolean;
   src: string;
   alt: string;
 }
