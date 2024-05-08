@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Modal from "react-modal";
 import { CardImageType } from "../types";
-Modal.setAppElement(document.getElementById("root"));
+Modal.setAppElement("#root");
 
 const customStyles = {
   content: {
