@@ -10,9 +10,8 @@ interface SearchBarProps {
 const SearchBar: FC<SearchBarProps> = ({ onSubmit }) => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
-    const { search } = form.elements;
-
+    const form = event.target as HTMLFormElement;
+    const search = form.elements.namedItem("search") as HTMLFormElement;
     if (search.value.length === 0) {
       toast.error("The input field is empty! Please write a word to search.", {
         icon: "😰",
